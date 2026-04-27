@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Salesforce Developer Portfolio</title>
+
+<style>
+body {
+margin: 0;
+font-family: 'Segoe UI', sans-serif;
+background: #0f172a;
+color: #e2e8f0;
+scroll-behavior: smooth;
+}
+
+/* NAVBAR */
+nav {
+display: flex;
+justify-content: space-between;
+padding: 20px 40px;
+position: sticky;
+top: 0;
+background: rgba(15,23,42,0.9);
+backdrop-filter: blur(10px);
+}
+
+nav a {
+color: #94a3b8;
+margin-left: 20px;
+text-decoration: none;
+transition: 0.3s;
+}
+
+nav a:hover {
+color: #38bdf8;
+}
+
+/* HERO */
+.hero {
+text-align: center;
+padding: 100px 20px;
+}
+
+.hero h1 {
+font-size: 3rem;
+background: linear-gradient(90deg, #38bdf8, #818cf8);
+-webkit-background-clip: text;
+color: transparent;
+}
+
+.hero button {
+margin: 10px;
+padding: 12px 20px;
+border: none;
+background: #38bdf8;
+color: black;
+border-radius: 8px;
+cursor: pointer;
+transition: 0.3s;
+}
+
+.hero button:hover {
+transform: scale(1.1);
+}
+
+/* SECTION */
+.section {
+padding: 60px 40px;
+}
+
+/* CARDS */
+.cards {
+display: flex;
+gap: 20px;
+flex-wrap: wrap;
+}
+
+.card {
+background: #1e293b;
+padding: 20px;
+border-radius: 12px;
+flex: 1;
+min-width: 200px;
+cursor: pointer;
+transition: 0.3s;
+}
+
+.card:hover {
+transform: translateY(-10px);
+background: #334155;
+}
+
+/* EXPANDABLE */
+.details {
+display: none;
+margin-top: 10px;
+font-size: 14px;
+color: #94a3b8;
+}
+
+/* PROJECTS */
+.project {
+background: #1e293b;
+margin-bottom: 20px;
+padding: 20px;
+border-radius: 12px;
+transition: 0.3s;
+}
+
+.project:hover {
+transform: scale(1.02);
+}
+
+/* FOOTER */
+footer {
+text-align: center;
+padding: 40px;
+color: #64748b;
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+<div><b>Akshita</b></div>
+<div>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#contact">Contact</a>
+</div>
+</nav>
+
+<section class="hero">
+<h1>Salesforce Developer</h1>
+<p>I build scalable solutions using LWC, Apex & OmniStudio</p>
+<button>Resume</button>
+<button>GitHub</button>
+</section>
+
+<section class="section" id="skills">
+<h2>What I Do</h2>
+<div class="cards">
+
+<div class="card" onclick="toggle(this)">
+LWC Development
+<div class="details">
+Built dynamic UI with filters, pagination & reusable components.
+</div>
+</div>
+
+<div class="card" onclick="toggle(this)">
+Apex & Triggers
+<div class="details">
+Bulkified logic, handled governor limits, async processing.
+</div>
+</div>
+
+<div class="card" onclick="toggle(this)">
+OmniStudio
+<div class="details">
+Integration Procedures, DataRaptors & FlexCards for enterprise flows.
+</div>
+</div>
+
+<div class="card" onclick="toggle(this)">
+Integrations
+<div class="details">
+REST APIs, third-party integrations & error handling.
+</div>
+</div>
+
+</div>
+</section>
+
+<section class="section" id="projects">
+<h2>Projects</h2>
+
+<div class="project">
+<h3>Email Management LWC</h3>
+<p>Flat + Grouped view with search across HTML body.</p>
+</div>
+
+<div class="project">
+<h3>Claim Sharing Engine</h3>
+<p>Handled bulk sharing with optimized DML strategy.</p>
+</div>
+
+</section>
+
+<section class="section" id="contact">
+<h2>Contact</h2>
+<p>Email: your@email.com</p>
+<p>Open to Salesforce opportunities 🚀</p>
+</section>
+
+<footer>
+Built with ❤️ using HTML, CSS & JS
+</footer>
+
+<script>
+function toggle(card) {
+let details = card.querySelector(".details");
+details.style.display =
+details.style.display === "block" ? "none" : "block";
+}
+</script>
+
+</body>
+</html>
