@@ -1,204 +1,185 @@
-<!-- redeploy -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Akshita Tyagi | Portfolio</title>
+<title>Akshita Tyagi</title>
 
 <style>
 {margin:0;padding:0;box-sizing:border-box;}
 body{
 font-family:'Segoe UI',sans-serif;
-scroll-behavior:smooth;
-overflow-x:hidden;
 background:#0f172a;
-color:#e2e8f0;
+color:white;
+overflow-x:hidden;
 }
-
-/ SCROLL SNAP /
 html{scroll-snap-type:y mandatory;}
 section{
 height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
 scroll-snap-align:start;
+}
+
+/ HERO BOX /
+.hero-box{
+border:1px solid rgba(255,255,255,0.2);
+padding:40px 60px;
+border-radius:20px;
 display:flex;
 align-items:center;
-justify-content:center;
-flex-direction:column;
-padding:40px;
+gap:50px;
+backdrop-filter:blur(10px);
 }
 
-/ HERO /
-.hero{
-display:flex;
-gap:60px;
+.hero-box h1{
+font-size:2.5rem;
 }
-.hero img{
-width:260px;
+
+.hero-box h2{
+color:#38bdf8;
+}
+
+/ AVATAR /
+.avatar{
+width:180px;
+height:180px;
 border-radius:50%;
+background:linear-gradient(135deg,#38bdf8,#818cf8);
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:60px;
 transition:0.2s;
-box-shadow:0 0 50px rgba(56,189,248,0.3);
-}
-.hero-text h1{
-font-size:3rem;
-background:linear-gradient(90deg,#38bdf8,#818cf8);
--webkit-background-clip:text;
-color:transparent;
-}
-.hero-text h2{
-color:#94a3b8;
-margin-top:10px;
-}
-
-/ TYPING /
-.typing::after{
-content:"|";
-animation:blink 1s infinite;
-}
-@keyframes blink{
-50%{opacity:0;}
 }
 
 / TIMELINE /
-.timeline{
+.timeline-container{
 position:relative;
 width:80%;
 }
-.timeline::before{
-content:"";
+.timeline-line{
 position:absolute;
 left:50%;
-width:2px;
 height:100%;
-background:#38bdf8;
+border-left:2px dashed #38bdf8;
 }
+
 .timeline-item{
 width:40%;
-padding:20px;
+padding:15px;
 background:#1e293b;
-border-radius:12px;
-margin:20px 0;
-position:relative;
+border-radius:10px;
+margin:30px 0;
 }
-.timeline-item.left{left:0;}
-.timeline-item.right{left:60%;}
-.timeline-item::after{
-content:"";
-position:absolute;
-top:20px;
-width:12px;
-height:12px;
-background:#38bdf8;
-border-radius:50%;
-}
-.left::after{right:-26px;}
-.right::after{left:-26px;}
+
+.left{margin-right:auto;}
+.right{margin-left:auto;}
 
 / SKILLS /
-.bubbles{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:15px;
+.skills{
+position:relative;
+width:100%;
+height:100%;
 }
 .bubble{
-padding:12px 18px;
-border-radius:30px;
+position:absolute;
+width:80px;
+height:80px;
+border-radius:50%;
 background:#1e293b;
+display:flex;
+align-items:center;
+justify-content:center;
+font-size:12px;
 transition:0.3s;
 }
-.bubbles:hover .bubble{
+.skills:hover .bubble{
 opacity:0.4;
-transform:scale(0.9);
 }
 .bubble:hover{
+transform:scale(1.5);
 opacity:1!important;
-transform:scale(1.4)!important;
 background:#38bdf8;
 color:black;
 }
 
-/ WORK STACK /
-.cards{
+/ WORK /
+.work-box{
+border:1px solid rgba(255,255,255,0.2);
+padding:40px;
+border-radius:20px;
 position:relative;
-display:flex;
+width:400px;
+height:400px;
 }
 .card{
-width:220px;
-height:220px;
-background:#1e293b;
-border-radius:15px;
 position:absolute;
-transition:0.4s;
-padding:15px;
+width:200px;
+height:200px;
+background:#1e293b;
+border-radius:12px;
+padding:10px;
+transition:0.3s;
 }
-.card:nth-child(1){left:0;top:0;}
-.card:nth-child(2){left:40px;top:40px;}
-.card:nth-child(3){left:80px;top:80px;}
-
+.card:nth-child(1){top:0;left:0;}
+.card:nth-child(2){top:40px;left:40px;}
+.card:nth-child(3){top:80px;left:80px;}
 .card:hover{
-transform:scale(1.2) translateY(-20px);
+transform:scale(1.2);
 z-index:10;
 }
 
-/ CONTACT /
+/ CONTACT */
 .contact{text-align:center;}
-
-/ FADE */
-.fade{
-opacity:0;
-transform:translateY(40px);
-transition:1s;
-}
-.fade.show{
-opacity:1;
-transform:translateY(0);
-}
 </style>
 </head>
 
 <body>
 
 <!-- HERO -->
-<section class="hero">
-<img id="face" src="https://via.placeholder.com/260">
-<div class="hero-text">
+<section>
+<div class="hero-box">
 <h1>Akshita Tyagi</h1>
-<h2 class="typing" id="typing"></h2>
-<p>4.9 Years | Accenture</p>
+
+<div class="avatar" id="avatar">👩‍💻</div>
+
+<h2>A Salesforce Developer</h2>
 </div>
 </section>
 
 <!-- TIMELINE -->
 <section>
-<div class="timeline fade">
+<div class="timeline-container">
+<div class="timeline-line"></div>
+
 <div class="timeline-item left">Trainee - Cognizant (2021)</div>
 <div class="timeline-item right">Programmer Analyst (2022)</div>
 <div class="timeline-item left">Associate (2023)</div>
 <div class="timeline-item right">Accenture (2024-Present)</div>
+
 </div>
 </section>
 
 <!-- SKILLS -->
 <section>
-<div class="bubbles fade">
-<div class="bubble">Apex</div>
-<div class="bubble">LWC</div>
-<div class="bubble">Aura</div>
-<div class="bubble">SOQL</div>
-<div class="bubble">Batch</div>
-<div class="bubble">Queueable</div>
-<div class="bubble">REST API</div>
-<div class="bubble">OmniStudio</div>
+<div class="skills">
+<div class="bubble" style="top:10%;left:20%">Apex</div>
+<div class="bubble" style="top:30%;left:60%">LWC</div>
+<div class="bubble" style="top:70%;left:40%">Aura</div>
+<div class="bubble" style="top:50%;left:80%">SOQL</div>
+<div class="bubble" style="top:20%;left:75%">Batch</div>
+<div class="bubble" style="top:60%;left:15%">Queueable</div>
 </div>
 </section>
 
 <!-- WORK -->
 <section>
-<div class="cards fade">
-<div class="card">Email LWC System</div>
-<div class="card">Claims Platform</div>
-<div class="card">Automation Engine</div>
+<div class="work-box">
+<div class="card">LWC System</div>
+<div class="card">Claims App</div>
+<div class="card">Automation</div>
 </div>
 </section>
 
@@ -210,37 +191,14 @@ transform:translateY(0);
 </section>
 
 <script>
-// IMAGE FOLLOW
-const face=document.getElementById("face");
+// AVATAR FOLLOW
+const avatar=document.getElementById("avatar");
 document.addEventListener("mousemove",(e)=>{
-let x=(e.clientX/window.innerWidth-0.5)*30;
-let y=(e.clientY/window.innerHeight-0.5)30;
-face.style.transform=translate(${x}px,${y}px);
-});
-
-// TYPING EFFECT
-const text="A Salesforce Developer who builds scalable systems 🚀";
-let i=0;
-function type(){
-if(i<text.length){
-document.getElementById("typing").innerHTML+=text.charAt(i);
-i++;
-setTimeout(type,40);
-}
-}
-type();
-
-// FADE ON SCROLL
-const faders=document.querySelectorAll('.fade');
-window.addEventListener('scroll',()=>{
-const trigger=window.innerHeight0.85;
-faders.forEach(el=>{
-if(el.getBoundingClientRect().top<trigger){
-el.classList.add('show');
-}
-});
+let x=(e.clientX/window.innerWidth-0.5)*20;
+let y=(e.clientY/window.innerHeight-0.5)*20;
+avatar.style.transform=translate(${x}px,${y}px);
 });
 </script>
 
 </body>
-</html>
+</html
