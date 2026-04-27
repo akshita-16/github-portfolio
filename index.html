@@ -75,6 +75,7 @@ overflow: hidden;
 display: flex;
 justify-content: center;
 align-items: center;
+avatar-shadow: 0 0 15px #38bdf8;
 }
 
 /* IMAGE */
@@ -98,17 +99,22 @@ background: conic-gradient(
 #818cf8,
 #38bdf8
 );
-animation: rotate 4s linear infinite;
-filter: blur(6px);
-z-index: 1;
+animation: rotate 3s linear infinite;
+
 }
+
+  .box-shadow{
+    0 0 20px #38bdf8,
+    0 0 40px #38bdf8,
+    0 0 60px rgba(58,189,248,0.6);
+  }
 
 /* INNER DARK LAYER (makes ring look clean) */
 .avatar::before {
 content: "";
 position: absolute;
-width: 135px;
-height: 135px;
+width: 120px;
+height: 120px;
 background: #0f172a;
 border-radius: 50%;
 z-index: 1;
@@ -120,6 +126,42 @@ z-index: 1;
 transform: rotate(360deg);
 }
 }
+  
+/* ABOUT SECTION */
+.about-box {
+justify-content: center;
+}
+
+.about-content {
+width: 80%;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+/* LEFT TEXT */
+.about-left {
+width: 25%;
+font-size: 22px;
+color: #38bdf8;
+}
+
+/* CENTER SQUARE */
+.about-center-box {
+width: 120px;
+height: 120px;
+border: 2px solid #38bdf8;
+border-radius: 10px;
+box-shadow: 0 0 15px #38bdf8;
+}
+
+/* RIGHT TEXT */
+.about-right {
+width: 40%;
+font-size: 14px;
+line-height: 1.6;
+}
+
 
 /* EXPERIENCE */
 .exp-container {
@@ -255,7 +297,28 @@ transform: translateY(0);
 </div>
 </div>
 </div>
+  
+<div class="section">
+<div class="box about-box">
 
+<div class="about-title">About Me</div>
+
+<div class="about-content">
+<div class="about-left">
+About Me
+</div>
+
+<div class="about-center-box"></div>
+
+<div class="about-right">
+Results-driven Salesforce Developer with 4.9 years of experience in Apex, LWC, and automation. Skilled in building scalable solutions, integrations, and improving business efficiency through smart design and development.
+</div>
+</div>
+
+</div>
+</div>
+
+  
 <!-- EXPERIENCE -->
 <div class="section fade">
 <div class="box">
