@@ -1,199 +1,129 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Akshita Tyagi</title>
 
 <style>
-{margin:0;padding:0;box-sizing:border-box;}
-body{
-font-family:'Segoe UI',sans-serif;
-background:#0f172a;
-color:white;
-overflow-x:hidden;
+body {
+margin: 0;
+font-family: Arial;
+background: #0f172a;
+color: white;
 }
 
-/ SCROLL SNAP /
-html,body{
-height:100%;
-scroll-snap-type:y mandatory;
-overflow-y:scroll;
-}
-.section{
-height:100vh;
-display:flex;
-justify-content:center;
-align-items:center;
-scroll-snap-align:start;
-padding:40px;
+/* SECTIONS /
+.section {
+height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
-/ SECTION BOX (BORDER) /
-.box{
-width:90%;
-height:85%;
-border:1px solid rgba(255,255,255,0.2);
-border-radius:20px;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-padding:30px;
+/ COMMON BOX /
+.box {
+width: 85%;
+height: 80%;
+border: 1px solid white;
+border-radius: 20px;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+position: relative;
 }
 
 / HEADINGS /
-h1{
-margin-bottom:20px;
-font-size:2rem;
+.heading {
+position: absolute;
+top: 20px;
+font-size: 22px;
 }
 
 / HERO /
-.hero-content{
-display:flex;
-align-items:center;
-gap:50px;
-}
-.hero-content h2{
-color:#38bdf8;
+.hero {
+display: flex;
+align-items: center;
+gap: 50px;
 }
 
-/ AVATAR /
-.avatar{
-width:140px;
-height:140px;
-background:#1e293b;
-border-radius:50%;
-display:flex;
-justify-content:center;
-align-items:center;
-}
-.eye{
-width:20px;
-height:20px;
-background:white;
-border-radius:50%;
-margin:5px;
-position:relative;
-}
-.pupil{
-width:8px;
-height:8px;
-background:black;
-border-radius:50%;
-position:absolute;
-top:6px;
-left:6px;
+.avatar {
+width: 120px;
+height: 120px;
+background: #1e293b;
+border-radius: 50%;
 }
 
 / EXPERIENCE /
-.exp-container{
-position:relative;
-width:80%;
-height:70%;
-}
-.exp-line{
-position:absolute;
-left:50%;
-top:0;
-height:100%;
-width:20px;
-background:rgba(56,189,248,0.1);
-border-radius:10px;
-}
-.exp-line::after{
-content:"";
-position:absolute;
-left:50%;
-transform:translateX(-50%);
-height:100%;
-border-left:2px dashed #38bdf8;
+.exp-container {
+width: 80%;
+height: 70%;
+position: relative;
 }
 
-.exp-item{
-width:35%;
-background:#1e293b;
-padding:12px;
-border-radius:10px;
-position:absolute;
+.line {
+position: absolute;
+left: 50%;
+width: 4px;
+height: 100%;
+background: white;
+transform: translateX(-50%);
 }
 
-.left{left:0;}
-.right{right:0;}
+.exp-box {
+width: 35%;
+padding: 10px;
+background: #1e293b;
+border-radius: 8px;
+position: absolute;
+}
 
-/ positions bottom to top /
-.i1{bottom:0;}
-.i2{bottom:25%;}
-.i3{bottom:50%;}
-.i4{bottom:75%;}
+.left { left: 0; }
+.right { right: 0; }
+
+.e1 { bottom: 0; }
+.e2 { bottom: 25%; }
+.e3 { bottom: 50%; }
+.e4 { bottom: 75%; }
 
 / SKILLS /
-.skills-box{
-position:relative;
-width:80%;
-height:70%;
-border:1px solid rgba(255,255,255,0.2);
-border-radius:15px;
-}
-.skills-line{
-position:absolute;
-top:50%;
-width:100%;
-height:6px;
-background:#38bdf8;
-opacity:0.4;
+.skills {
+width: 100%;
+height: 100%;
+position: relative;
 }
 
-.bubble{
-position:absolute;
-width:70px;
-height:70px;
-border-radius:50%;
-background:#1e293b;
-display:flex;
-justify-content:center;
-align-items:center;
-font-size:11px;
-transition:0.3s;
-}
-.skills-box:hover .bubble{
-opacity:0.4;
-}
-.bubble:hover{
-transform:scale(1.4);
-opacity:1!important;
-background:#38bdf8;
-color:black;
+.bubble {
+width: 60px;
+height: 60px;
+background: #1e293b;
+border-radius: 50%;
+position: absolute;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 10px;
 }
 
 / WORK /
-.work-box{
-position:relative;
-width:300px;
-height:300px;
+.work {
+display: flex;
+gap: 20px;
 }
-.card{
-position:absolute;
-width:180px;
-height:180px;
-background:#1e293b;
-border-radius:12px;
-display:flex;
-align-items:center;
-justify-content:center;
-transition:0.3s;
-}
-.card:nth-child(1){top:0;left:0;}
-.card:nth-child(2){top:30px;left:30px;}
-.card:nth-child(3){top:60px;left:60px;}
-.card:hover{
-transform:scale(1.2);
-z-index:10;
+
+.card {
+width: 120px;
+height: 120px;
+background: #1e293b;
+border-radius: 10px;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 
 / CONTACT */
-.contact{text-align:center;}
-
+.contact {
+text-align: center;
+}
 </style>
 </head>
 
@@ -202,15 +132,10 @@ z-index:10;
 <!-- HERO -->
 <div class="section">
 <div class="box">
-<div class="hero-content">
-<h1>Akshita Tyagi</h1>
-
-<div class="avatar" id="avatar">
-<div class="eye"><div class="pupil"></div></div>
-<div class="eye"><div class="pupil"></div></div>
-</div>
-
-<h2>A Salesforce Developer</h2>
+<div class="hero">
+<div>Akshita Tyagi</div>
+<div class="avatar"></div>
+<div>Salesforce Developer</div>
 </div>
 </div>
 </div>
@@ -218,15 +143,15 @@ z-index:10;
 <!-- EXPERIENCE -->
 <div class="section">
 <div class="box">
-<h1>My Experience</h1>
+<div class="heading">My Experience</div>
 
 <div class="exp-container">
-<div class="exp-line"></div>
+<div class="line"></div>
 
-<div class="exp-item left i1">Trainee - Cognizant (2021)</div>
-<div class="exp-item right i2">Programmer Analyst (2022)</div>
-<div class="exp-item left i3">Associate (2023)</div>
-<div class="exp-item right i4">Accenture (2024-Present)</div>
+<div class="exp-box left e1">Trainee (2021)</div>
+<div class="exp-box right e2">Programmer Analyst (2022)</div>
+<div class="exp-box left e3">Associate (2023)</div>
+<div class="exp-box right e4">Accenture (2024)</div>
 
 </div>
 </div>
@@ -235,20 +160,17 @@ z-index:10;
 <!-- SKILLS -->
 <div class="section">
 <div class="box">
-<h1>My Skills</h1>
+<div class="heading">My Skills</div>
 
-<div class="skills-box">
-<div class="skills-line"></div>
-
+<div class="skills">
 <div class="bubble" style="top:10%;left:20%">Apex</div>
-<div class="bubble" style="top:20%;left:60%">LWC</div>
-<div class="bubble" style="top:40%;left:30%">Aura</div>
-<div class="bubble" style="top:60%;left:70%">SOQL</div>
-<div class="bubble" style="top:70%;left:20%">Batch</div>
-<div class="bubble" style="top:50%;left:50%">Queueable</div>
-<div class="bubble" style="top:30%;left:80%">REST</div>
-<div class="bubble" style="top:80%;left:60%">Flows</div>
-
+<div class="bubble" style="top:20%;left:50%">LWC</div>
+<div class="bubble" style="top:30%;left:70%">Aura</div>
+<div class="bubble" style="top:50%;left:30%">SOQL</div>
+<div class="bubble" style="top:70%;left:60%">Batch</div>
+<div class="bubble" style="top:40%;left:10%">Queueable</div>
+<div class="bubble" style="top:80%;left:40%">REST</div>
+<div class="bubble" style="top:60%;left:80%">Flows</div>
 </div>
 </div>
 </div>
@@ -256,11 +178,11 @@ z-index:10;
 <!-- WORK -->
 <div class="section">
 <div class="box">
-<h1>My Work</h1>
+<div class="heading">My Work</div>
 
-<div class="work-box">
-<div class="card">LWC System</div>
-<div class="card">Claims App</div>
+<div class="work">
+<div class="card">LWC</div>
+<div class="card">Claims</div>
 <div class="card">Automation</div>
 </div>
 </div>
@@ -269,22 +191,11 @@ z-index:10;
 <!-- CONTACT -->
 <div class="section">
 <div class="box contact">
-<h1>Contact</h1>
-<p>akshita.tyagi16@gmail.com</p>
-<p>+91-9897370632</p>
+<div class="heading">Contact</div>
+<div>akshita.tyagi16@gmail.com</div>
+<div>+91-9897370632</div>
 </div>
 </div>
-
-<script>
-// EYE TRACKING
-document.addEventListener("mousemove",(e)=>{
-document.querySelectorAll(".pupil").forEach(p=>{
-let x=(e.clientX/window.innerWidth-0.5)*10;
-let y=(e.clientY/window.innerHeight-0.5)*10;
-p.style.transform=translate(${x}px,${y}px);
-});
-});
-</script>
 
 </body>
 </html>
