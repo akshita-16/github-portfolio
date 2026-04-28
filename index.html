@@ -303,6 +303,50 @@ transition: 0.3s;
 transform: translateY(-10px) scale(1.1);
 box-shadow: 0 0 20px #38bdf8;
 }
+  .slider-container {
+  position: relative;
+  width: 80%;
+  overflow: hidden;
+}
+
+/* SLIDER TRACK */
+.slider {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+/* CARDS */
+.card {
+  min-width: 30%;
+  margin: 0 10px;
+  padding: 15px;
+  background: #1e293b;
+  border-radius: 10px;
+  text-align: center;
+}
+
+/* NAV BUTTONS */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #1e293b;
+  border: none;
+  color: #38bdf8;
+  font-size: 24px;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.left-btn { left: -40px; }
+.right-btn { right: -40px; }
+
+.nav-btn:hover {
+  background: #38bdf8;
+  color: black;
+}
 
 /* CONTACT */
 .contact {
@@ -460,16 +504,32 @@ Results-driven Salesforce Developer with 4.9 years of experience in Apex, LWC, a
 <div class="section fade">
 <div class="box">
 <div class="heading">My Work</div>
+<div class="slider-container">
 
-<div class="work">
-<div class="card">Designed and developed a scalable Claims Management solution using LWC and Apex, streamlining end-to-end claim processing. Reduced resolution time by 20% while improving data accuracy and user efficiency across multiple business workflows.</div>
-<div class="card">Engineered automated SLA tracking and escalation workflows using Salesforce Flows and Apex triggers, eliminating manual intervention. Achieved a 70% reduction in customer escalations and significantly improved response turnaround time.</div>
-<div class="card">Developed high-performance, reusable Lightning Web Components to simplify complex UI interactions. Reduced user clicks and enhanced usability, contributing to a 30% improvement in overall user experience and productivity.</div>
-  <div class="card">Implemented OmniStudio components (Integration Procedures, DataRaptors, FlexCards) along with REST API integrations to enable seamless communication between Salesforce and external systems, reducing integration cycle time by 20%.</div>
-  <div class="card">Led deployment strategies using Git, Copado, and Harness, ensuring smooth CI/CD pipelines. Improved release success rate by 25% while accelerating deployment cycles in Agile delivery environments.</div>
-  <div class="card">Optimized large-scale data operations using Batch Apex and Queueable Apex, ensuring efficient processing of high-volume datasets. Enhanced system performance and scalability by over 30%.</div>
-  <div class="card">Designed and implemented automated workflows for case assignment, task creation, and email notifications using Salesforce Flows, significantly improving operational efficiency and real-time tracking capabilities.</div>
+      <button class="nav-btn left-btn" onclick="slideLeft()">❮</button>
+
+      <div class="slider" id="slider">
+
+        <!-- CARD 1 -->
+        <div class="card">
+          <div class="work-desc">Designed and developed a scalable Claims Management solution using LWC and Apex, streamlining end-to-end claim processing. Reduced resolution time by 20% while improving data accuracy and user efficiency across multiple business workflows.</div></div>
+<div class="card">
+  <div class="work-desc">Engineered automated SLA tracking and escalation workflows using Salesforce Flows and Apex triggers, eliminating manual intervention. Achieved a 70% reduction in customer escalations and significantly improved response turnaround time.</div></div>
+<div class="card">
+  <div class="work-desc">Developed high-performance, reusable Lightning Web Components to simplify complex UI interactions. Reduced user clicks and enhanced usability, contributing to a 30% improvement in overall user experience and productivity.</div></div>
+  <div class="card">
+    <div class="work-desc">Implemented OmniStudio components (Integration Procedures, DataRaptors, FlexCards) along with REST API integrations to enable seamless communication between Salesforce and external systems, reducing integration cycle time by 20%.</div></div>
+  <div class="card">
+    <div class="work-desc">Led deployment strategies using Git, Copado, and Harness, ensuring smooth CI/CD pipelines. Improved release success rate by 25% while accelerating deployment cycles in Agile delivery environments.</div></div>
+  <div class="card">
+    <div class="work-desc">Optimized large-scale data operations using Batch Apex and Queueable Apex, ensuring efficient processing of high-volume datasets. Enhanced system performance and scalability by over 30%.</div></div>
+  <div class="card">
+    <div class="work-desc">Designed and implemented automated workflows for case assignment, task creation, and email notifications using Salesforce Flows, significantly improving operational efficiency and real-time tracking capabilities.</div></div>
 </div>
+
+      <button class="nav-btn right-btn" onclick="slideRight()">❯</button>
+
+    </div>
 </div>
 </div>
 
@@ -504,6 +564,26 @@ el.classList.add("show");
 }
 });
 });
+let index = 0;
+
+function slideRight() {
+  const slider = document.getElementById("slider");
+  const totalCards = slider.children.length;
+
+  if (index < totalCards - 3) {
+    index++;
+    slider.style.transform = `translateX(-${index * 33}%)`;
+  }
+}
+
+function slideLeft() {
+  const slider = document.getElementById("slider");
+
+  if (index > 0) {
+    index--;
+    slider.style.transform = `translateX(-${index * 33}%)`;
+  }
+}
 </script>
 
 </body>
