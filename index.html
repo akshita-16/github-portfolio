@@ -48,10 +48,9 @@ transition: 0.5s;
 /* HEADING */
 .heading {
 position: absolute;
-top: 50px;
-font-size: 30px;
+top: 40px;
+font-size: 24px;
 letter-spacing: 1px;
-color: #38bdf8;
 }
 
 /* HERO */
@@ -181,7 +180,6 @@ line-height: 1.6;
 
 /* EXPERIENCE */
 .exp-container {
-  top:30px;
 width: 80%;
 height: 70%;
 position: relative;
@@ -247,9 +245,9 @@ color: black;
 .right { left: 48%; transform:translateX(10%);}
 
 .e1 { bottom: 0; }
-.e2 { bottom: 25%; top:55%;}
-.e3 { bottom: 50%; top:30%;}
-.e4 { bottom: 75%; top:5%;}
+.e2 { bottom: 25%; }
+.e3 { bottom: 50%; }
+.e4 { bottom: 75%; }
 
 /* SKILLS */
 .skills {
@@ -326,17 +324,16 @@ padding: 5px;
 }
 /* NAV BUTTONS */
 .nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: #1e293b;
-  border: none;
-  color: #38bdf8;
-  font-size: 24px;
-  cursor: pointer;
-  padding: 10px;
-  border-radius: 50%;
-  z-index: 2;
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+background: rgba(30,41,59,0.9);
+border: 1px solid #38bdf8;
+color: #38bdf8;
+font-size: 22px;
+cursor: pointer;
+padding: 12px;
+border-radius: 50%;
 }
 
 .left-btn { left: 10px; }
@@ -395,6 +392,113 @@ transition: 1s;
 opacity: 1;
 transform: translateY(0);
 }
+  
+/* ================= MOBILE FIX ================= */
+@media (max-width: 768px) {
+
+/* GENERAL */
+body {
+overflow-x: hidden;
+}
+
+.box {
+width: 95%;
+padding: 15px;
+}
+
+.section-title {
+font-size: 20px;
+margin-bottom: 15px;
+}
+
+/* HERO SECTION */
+.hero {
+flex-direction: column;
+text-align: center;
+gap: 20px;
+}
+
+/* AVATAR */
+.avatar {
+width: 100px;
+height: 100px;
+}
+
+/* ABOUT SECTION */
+.about-content {
+flex-direction: column;
+gap: 20px;
+text-align: center;
+}
+
+.about-left {
+text-align: center;
+width: 100%;
+}
+
+.about-right {
+width: 100%;
+}
+
+.about-center-box {
+margin: 0;
+}
+
+/* EXPERIENCE (BIG FIX) */
+.timeline {
+width: 100%;
+}
+
+.exp-box {
+position: relative; /* remove absolute */
+width: 100%;
+left: 0 !important;
+transform: none !important;
+margin: 15px 0;
+}
+
+/* remove left/right split */
+.left, .right {
+left: 0 !important;
+}
+
+/* hide center line (optional) */
+.timeline::after {
+display: none;
+}
+
+/* SKILLS */
+.skills {
+height: auto;
+}
+
+.bubble {
+position: relative;
+margin: 8px;
+display: inline-block;
+}
+
+/* WORK SLIDER */
+.slider-container {
+width: 100%;
+}
+
+.card {
+min-width: 90%; /* show 1 card */
+margin: 10px;
+}
+
+.nav-btn {
+display: none; /* hide arrows for mobile */
+}
+
+/* CONTACT */
+.contact-icons {
+flex-wrap: wrap;
+gap: 15px;
+}
+}
+
 </style>
 </head>
 
@@ -552,6 +656,8 @@ d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M8
 </div>
 
 <script>
+  window.scrollTo(0,1);
+  window.scrollTo(0,0);
 // FADE IN ON SCROLL
 const elements = document.querySelectorAll(".fade");
 
