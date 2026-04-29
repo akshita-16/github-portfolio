@@ -446,22 +446,21 @@ margin: 0;
 
 /* EXPERIENCE (BIG FIX) */
 .timeline {
-display:block !important;
-height:auto !important;
+position:relative;
+  padding-left:20px;
 }
 
 .exp-box {
 position: relative !important;
-width: 90% !important;
+width: 85% !important;
 left: 0 !important;
 transform: none !important;
-margin: 15px auto !important;
+margin: 20px 0 20px 30px !important;
 }
 
 /* remove left/right split */
 .left, .right {
 left: 0 !important;
-  transform:none !important;
 }
 
 .e1, .e2, .e3, .e4{
@@ -470,24 +469,33 @@ left: 0 !important;
 
 /* hide center line (optional) */
 .timeline::after {
-display: none !important;
+left: 10px !important;
+  width:2px;
 }
 
 /* SKILLS */
 .skills {
-display: flex !important;
-flex-wrap: wrap !important;
-justify-content: center !important;
-gap: 10px !important;
-height: auto !important;
+position:relative;
+height: 300px;
 }
 
 .bubble {
-position: static !important;
-width: 70px !important;
-height: 70px !important;
-margin: 5px !important;
+position: absolute !important;
+width: 65px;
+height: 65px;
+font-size:10px: 5px !important;
 }
+
+/* RANDOM POSITIONS (mobile safe) */
+.bubble:nth-child(1) { top: 10%; left: 20%; }
+.bubble:nth-child(2) { top: 20%; left: 60%; }
+.bubble:nth-child(3) { top: 40%; left: 30%; }
+.bubble:nth-child(4) { top: 55%; left: 70%; }
+.bubble:nth-child(5) { top: 70%; left: 40%; }
+.bubble:nth-child(6) { top: 30%; left: 75%; }
+.bubble:nth-child(7) { top: 75%; left: 15%; }
+.bubble:nth-child(8) { top: 50%; left: 10%; }
+
 
 /* WORK SLIDER */
 .slider-container {
