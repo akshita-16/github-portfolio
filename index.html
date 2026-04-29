@@ -446,36 +446,47 @@ margin: 0;
 
 /* EXPERIENCE (BIG FIX) */
 .timeline {
-width: 100%;
+display:block !important;
+height:auto !important;
 }
 
 .exp-box {
-position: relative; /* remove absolute */
-width: 100%;
+position: relative !important;
+width: 90% !important;
 left: 0 !important;
 transform: none !important;
-margin: 15px 0;
+margin: 15px auto !important;
 }
 
 /* remove left/right split */
 .left, .right {
 left: 0 !important;
+  transform:none !important;
+}
+
+.e1, .e2, .e3, .e4{
+  top:auto !important;
 }
 
 /* hide center line (optional) */
 .timeline::after {
-display: none;
+display: none !important;
 }
 
 /* SKILLS */
 .skills {
-height: auto;
+display: flex !important;
+flex-wrap: wrap !important;
+justify-content: center !important;
+gap: 10px !important;
+height: auto !important;
 }
 
 .bubble {
-position: relative;
-margin: 8px;
-display: inline-block;
+position: static !important;
+width: 70px !important;
+height: 70px !important;
+margin: 5px !important;
 }
 
 /* WORK SLIDER */
