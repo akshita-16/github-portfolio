@@ -515,6 +515,7 @@ width: 100%;
 .card {
 min-width: 90%; /* show 1 card */
 margin: 10px;
+    flex-shrink: 0;
 }
 
 .nav-btn {
@@ -711,24 +712,43 @@ el.classList.add("show");
 }
 });
 });
+
 let index = 0;
 
 function slideRight() {
-  const slider = document.getElementById("slider");
-  const totalCards = slider.children.length;
 
-  if (index < totalCards - 3) {
+  const slider = document.getElementById("slider");
+  const cards = document.querySelectorAll(".card");
+
+  const totalCards = cards.length;
+  const visibleCards = 3;
+
+  if(index < totalCards - visibleCards){
+
     index++;
-    slider.style.transform = `translateX(-${index * 33}%)`;
+
+    const cardWidth =
+      cards[0].offsetWidth + 20; // includes margin
+
+    slider.style.transform =
+      `translateX(-${index * cardWidth}px)`;
   }
 }
 
-function slideLeft() {
-  const slider = document.getElementById("slider");
+function slideLeft(){
 
-  if (index > 0) {
+  const slider = document.getElementById("slider");
+  const cards = document.querySelectorAll(".card");
+
+  if(index > 0){
+
     index--;
-    slider.style.transform = `translateX(-${index * 33}%)`;
+
+    const cardWidth =
+      cards[0].offsetWidth + 20;
+
+    slider.style.transform =
+      `translateX(-${index * cardWidth}px)`;
   }
 }
 </script>
