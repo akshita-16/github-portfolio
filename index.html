@@ -4,6 +4,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+* { box-sizing: border-box; }
 body {
 margin: 0;
 font-family: Arial;
@@ -23,7 +24,9 @@ animation: bg 10s ease infinite;
 
 /* SECTION */
 .section {
-height: 100vh;
+min-height: 100vh;
+height: auto;
+padding: 24px 0;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -32,7 +35,8 @@ align-items: center;
 /* GLASS BOX */
 .box {
 width: 85%;
-height: 80%;
+min-height: 80vh;
+height: auto;
 border-radius: 20px;
 border: 1px solid rgba(255,255,255,0.2);
 background: rgba(255,255,255,0.05);
@@ -59,8 +63,12 @@ display: flex;
 align-items: center;
 gap: 50px;
 animation: float 3s ease-in-out infinite;
-  font-size: 24px;
+font-size: 24px;
 }
+.hero-copy { text-align: right; }
+.hero-name { margin: 0 0 8px; font-size: clamp(30px, 4vw, 44px); letter-spacing: .2px; }
+.hero-focus { max-width: 290px; font-size: 18px; line-height: 1.5; color: #cbd5e1; }
+.hero-focus strong { color: #38bdf8; font-weight: 600; }
 
 @keyframes float {
 0%,100% {transform: translateY(0);}
@@ -76,7 +84,7 @@ overflow: hidden;
 display: flex;
 justify-content: center;
 align-items: center;
-avatar-shadow: 0 0 15px #38bdf8;
+box-shadow: 0 0 15px #38bdf8;
 }
 
 /* IMAGE */
@@ -101,19 +109,16 @@ background: conic-gradient(
 #38bdf8
 );
 animation: rotate 3s linear infinite;
-
 }
 
-  .avatar:hover{
-    transform:scale(1:1);
-    box-shadow:0 0 30px #38bdf8;
-  }
+.avatar:hover {
+transform: scale(1.05);
+box-shadow: 0 0 30px #38bdf8;
+}
 
-  .box-shadow{
-    0 0 20px #38bdf8,
-    0 0 40px #38bdf8,
-    0 0 60px rgba(58,189,248,0.6);
-  }
+.box:hover {
+box-shadow: 0 0 20px #38bdf8, 0 0 40px #38bdf8, 0 0 60px rgba(58,189,248,0.6);
+}
 
 /* INNER DARK LAYER (makes ring look clean) */
 .avatar::before {
@@ -132,7 +137,7 @@ z-index: 1;
 transform: rotate(360deg);
 }
 }
-  
+
 /* ABOUT SECTION */
 .about-box {
 justify-content: center;
@@ -143,144 +148,154 @@ width: 80%;
 display: flex;
 align-items: center;
 justify-content: center;
-  gap:300px;
+gap: 28px;
 }
+.about-left { flex: 0 0 130px; }
+.about-center-box { flex: 0 1 430px; width: min(430px, 100%); min-width: 0; height: auto; }
+.about-right { padding: 20px; width: 100%; min-width: 0; font-size: 14px; line-height: 1.6; overflow-wrap: anywhere; }
+.about-proof { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.proof-chip, .tech-chip { display: inline-flex; align-items: center; border: 1px solid rgba(56,189,248,.38); border-radius: 999px; color: #bae6fd; background: rgba(56,189,248,.08); }
+.proof-chip { padding: 5px 10px; font-size: 11px; }
+
+/* Keep the name as a heading above the portrait and flanking copy. */
+.hero {
+display: grid;
+grid-template-columns: minmax(0, 1fr) 130px minmax(0, 1fr);
+grid-template-rows: auto auto;
+align-items: center;
+justify-items: center;
+gap: 18px 30px;
+}
+.hero-name { grid-column: 1 / -1; grid-row: 1; margin: 0; text-align: center; font-size: clamp(28px, 3.5vw, 38px); }
+.hero-copy { grid-column: 1; grid-row: 2; justify-self: end; text-align: right; }
+.hero .avatar { grid-column: 2; grid-row: 2; }
+.hero > .hero-focus { grid-column: 3; grid-row: 2; justify-self: start; text-align: left; }
+.hero-copy .hero-focus { max-width: 300px; }
+.nav-btn svg { width: 20px; height: 20px; display: block; margin: auto; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
 
 /* LEFT TEXT */
 .about-left {
 width: 110px;
 font-size: 24px;
 color: #38bdf8;
-text-align:right;
+text-align: right;
 }
 
 /* CENTER SQUARE */
 .about-center-box {
-width: 430px;
-height: 120px;
+width: min(430px, 100%);
+min-width: 0;
+height: auto;
 border: 2px solid #38bdf8;
 border-radius: 10px;
-
-  transition:0.3s;
+transition: 0.3s;
 }
 
-  .about-center-box:hover{
-    transform:scale(1:1);
-    box-shadow:0 0 30px #38bdf8
-  }
+.about-center-box:hover {
+transform: scale(1.05);
+box-shadow: 0 0 30px #38bdf8;
+}
 
 /* RIGHT TEXT */
 .about-right {
-padding:20px;
-width: 400px;
+padding: 20px;
+width: 100%;
 font-size: 14px;
 line-height: 1.6;
+overflow-wrap: anywhere;
 }
-
+.about-proof { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.proof-chip, .tech-chip { display: inline-flex; align-items: center; border: 1px solid rgba(56,189,248,.38); border-radius: 999px; color: #bae6fd; background: rgba(56,189,248,.08); }
+.proof-chip { padding: 5px 10px; font-size: 11px; }
 
 /* EXPERIENCE */
 .exp-container {
-width: 80%;
-height: 70%;
+width: min(900px, 100%);
+display: grid;
+grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+grid-template-rows: repeat(5, auto);
+gap: 14px 64px;
+padding: 82px 0 20px;
 position: relative;
 }
+.experience-screen { justify-content: flex-start; }
 
 .line {
 position: absolute;
+top: 68px;
+bottom: 20px;
 left: 50%;
 width: 4px;
-height: 100%;
 background: #38bdf8;
 transform: translateX(-50%);
 box-shadow: 0 0 10px #38bdf8;
 }
 
 .exp-box {
-width: 30%;
+width: 100%;
 padding: 12px;
 background: #1e293b;
 border-radius: 10px;
-position: absolute;
-transform-origin:center;
-transition: 0.3s; ease,backgroud 0.3s;
+position: relative;
+transform-origin: center;
+transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
 border: 2px solid #38bdf8;
 }
 
-  .top-row{
-    display:flex;
-    jutify-content:space-between;
-    align-items:center;
-  }
-  .role{
-    font-size:16px;
-    font-weight:600;
-  }
-  .year{
-    font-size:12px;
-    color:#94a3b8;
-  }
-  .company{
-    font-size:13px;
-    color:#38bdf8;
-    margin:4px;
-  }
-  .exp-box:hover .company, .exp-box:hover .year{
-    color:black;
-  }
-  
+.top-row {
+display: flex;
+justify-content: space-between;
+align-items: flex-start;
+gap: 10px;
+}
+.role {
+min-width: 0;
+flex: 1;
+font-size: 16px;
+font-weight: 600;
+overflow-wrap: anywhere;
+}
+.year {
+flex: 0 0 auto;
+white-space: nowrap;
+font-size: 12px;
+color: #94a3b8;
+}
+.company {
+font-size: 13px;
+color: #38bdf8;
+margin: 6px 0 0;
+}
+.exp-box:hover .company, .exp-box:hover .year {
+color: black;
+}
+
 .left:hover {
-transform:translateX(-110%) scale(1.05);
-transform-origin:right center;
+transform: translateX(-3px);
 background: #38bdf8;
 color: black;
 }
 .right:hover {
-transform:translateX(10%) scale(1.05);
-transform-origin:left center;
+transform: translateX(3px);
 background: #38bdf8;
 color: black;
 }
 
-.left { left: 51%; transform:translateX(-110%);}
-.right { left: 48%; transform:translateX(10%);}
-
-.e1 { bottom: 0; }
-.e2 { bottom: 25%; }
-.e3 { bottom: 50%; }
-.e4 { bottom: 75%; }
+.exp-box.left { grid-column: 1; text-align: left; }
+.exp-box.right { grid-column: 2; text-align: left; }
+.exp-box.e1 { grid-row: 1; }
+.exp-box.e2 { grid-row: 2; }
+.exp-box.e3 { grid-row: 3; }
+.exp-box.e4 { grid-row: 4; }
+.exp-box.e5 { grid-row: 5; }
 
 /* SKILLS */
-.skills {
-width: 70%;
-height: 70%;
-position: relative;
-}
-
-.bubble {
-width: 80px;
-height: 80px;
-background: #1e293b;
-border-radius: 50%;
-position: absolute;
-display: flex;
-justify-content: center;
-align-items: center;
-font-size: 10px;
-transition: 0.3s;
-}
-
-.skills:hover .bubble {
-opacity: 0.4;
-    transform:scale(1:1);
-    box-shadow:0 0 30px #38bdf8
-}
-
-.bubble:hover {
-transform: scale(1.5);
-opacity: 1 !important;
-background: #38bdf8;
-color: black;
-}
+.skills-grid { width: min(850px, 100%); display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.skill-group { min-width: 0; padding: 20px 18px; border: 1px solid rgba(56,189,248,.35); border-radius: 14px; background: rgba(15,23,42,.48); transition: transform .25s ease, background-color .25s ease, border-color .25s ease, box-shadow .25s ease; }
+.skill-group h3 { margin: 0 0 14px; color: #38bdf8; font-size: 16px; line-height: 1.35; transition: color .25s ease; }
+.skill-group:hover, .skill-group:active { transform: translateY(-2px); border-color: #38bdf8; background: rgba(15,23,42,.48); box-shadow: 0 0 24px rgba(56,189,248,.35); }
+.skill-list { display: flex; flex-wrap: wrap; gap: 8px; }
+.skill-item { max-width: 100%; padding: 7px 10px; border-radius: 8px; background: rgba(30,41,59,.9); color: #e2e8f0; font-size: 12px; line-height: 1.25; overflow-wrap: anywhere; transition: background-color .25s ease, color .25s ease; }
 
 /* WORK */
 .work {
@@ -288,82 +303,88 @@ display: flex;
 gap: 20px;
 }
 
-
-
 .card:hover {
-transform: translateY(-10px) scale(1.1);
+transform: translateY(-6px);
 box-shadow: 0 0 20px #38bdf8;
 }
-  .slider-container {
-    padding:30px 0;
-  position: relative;
-  width: 80%;
-  overflow: hidden;
+.slider-container {
+padding: 30px 0;
+position: relative;
+width: min(900px, 100%);
+overflow: hidden;
+box-sizing: border-box;
 }
+.impact-row { width: min(800px, 100%); display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 0 auto 6px; }
+.impact-item { padding: 10px 12px; text-align: center; background: rgba(15,23,42,.55); border: 1px solid rgba(56,189,248,.25); border-radius: 10px; }
+.impact-value { display: block; color: #38bdf8; font-size: 20px; font-weight: 700; }
+.impact-label { display: block; margin-top: 3px; color: #cbd5e1; font-size: 11px; line-height: 1.4; }
 
 /* SLIDER TRACK */
 .slider {
-  display: flex;
-  transition: transform 0.5s ease;
+display: flex;
+gap: 20px;
+transition: transform 0.5s ease;
 }
 
 /* CARDS */
 .card {
-  min-width: 30%;
-  margin: 0 10px;
-  padding: 15px;
-  background: #1e293b;
-  border-radius: 10px;
-  text-align: center;
-  flex: 0 0 calc(33.333% - 14px);
-  box-sizing: border-box;
-
+min-width: 0;
+margin: 0;
+padding: 15px 13px;
+background: #1e293b;
+border-radius: 10px;
+text-align: center;
+flex: 0 0 calc((100% - 40px) / 3);
+box-sizing: border-box;
 }
+.card h3 { margin: 0 0 9px; color: #fff; font-size: 15px; line-height: 1.35; }
+.tech-list { display: flex; justify-content: center; flex-wrap: wrap; gap: 5px; margin: 0 0 9px; }
+.tech-chip { padding: 3px 7px; font-size: 10px; }
 .work-desc {
 font-size: 12px;
 color: #94a3b8;
 text-align: center;
 padding: 5px;
+line-height: 1.45;
 }
+
 /* NAV BUTTONS */
 .nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1000;   /* VERY IMPORTANT */
-
-  background: rgba(15,23,42,0.9);
-  border: 1px solid #38bdf8;
-  color: #38bdf8;
-
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-
-  cursor: pointer;
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+z-index: 1000;
+background: rgba(15,23,42,0.9);
+border: 1px solid #38bdf8;
+color: #38bdf8;
+width: 45px;
+height: 45px;
+border-radius: 50%;
+cursor: pointer;
 }
-
+.nav-btn:disabled { opacity: .4; cursor: default; }
+.nav-btn:disabled:hover { background: rgba(15,23,42,0.9); color: #38bdf8; }
 .left-btn { left: 10px; }
 .right-btn { right: 10px; }
-
 .nav-btn:hover {
-  background: #38bdf8;
-  color: black;
+background: #38bdf8;
+color: black;
 }
 
 /* CONTACT */
-.contact {
-text-align: center;
-}
-
-  
+.contact { text-align: center; }
+.contact-intro { max-width: 520px; margin: 0 auto 8px; color: #cbd5e1; line-height: 1.6; }
+.contact-links { width: min(620px, 100%); display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
+.contact-link { min-width: 220px; display: flex; flex-direction: column; gap: 4px; padding: 13px 18px; border: 1px solid rgba(56,189,248,.45); border-radius: 12px; background: rgba(15,23,42,.45); color: #fff; text-decoration: none; transition: background .2s ease, border-color .2s ease, transform .2s ease; }
+.contact-link:hover, .contact-link:focus-visible { border-color: #38bdf8; background: rgba(56,189,248,.12); transform: translateY(-2px); }
+.contact-label { color: #38bdf8; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+.contact-value { overflow-wrap: anywhere; }
 .contact-icons {
 margin-top: 20px;
 display: flex;
 justify-content: center;
 gap: 20px;
 }
-
 .icon {
 width: 50px;
 height: 50px;
@@ -375,20 +396,14 @@ justify-content: center;
 color: #38bdf8;
 transition: 0.3s;
 }
-
-.icon svg {
-width: 24px;
-height: 24px;
-}
-
-/* HOVER EFFECT */
+.icon svg { width: 24px; height: 24px; }
 .icon:hover {
 background: #38bdf8;
 color: black;
 transform: scale(1.1);
 box-shadow: 0 0 15px #38bdf8;
 }
-  
+
 /* FADE ANIMATION */
 .fade {
 opacity: 0;
@@ -399,363 +414,289 @@ transition: 1s;
 opacity: 1;
 transform: translateY(0);
 }
-  
-/* ================= MOBILE FIX ================= */
+
+/* MOBILE */
 @media (max-width: 768px) {
-
-/* GENERAL */
-body {
-overflow-x: hidden;
-}
-
+body { overflow-x: hidden; }
 .box {
 width: 95%;
+min-height: 88svh;
 padding: 15px;
 }
-
-.section-title {
-font-size: 20px;
-margin-bottom: 15px;
-}
-
-/* HERO SECTION */
+.section-title { font-size: 20px; margin-bottom: 15px; }
 .hero {
-flex-direction: column;
-text-align: center;
-gap: 20px;
+grid-template-columns: minmax(0, 1fr);
+grid-template-rows: auto auto auto auto;
+gap: 14px;
 }
+.hero-name { grid-column: 1; grid-row: 1; }
+.hero .avatar { grid-column: 1; grid-row: 2; }
+.hero-copy { grid-column: 1; grid-row: 3; justify-self: center; text-align: center; }
+.hero > .hero-focus { grid-column: 1; grid-row: 4; justify-self: center; text-align: center; }
+.hero-focus { max-width: 320px; font-size: 16px; }
+.avatar { width: 100px; height: 100px; }
 
-/* AVATAR */
-.avatar {
-width: 100px;
-height: 100px;
-}
-
-/* ABOUT SECTION */
 .about-content {
+width: 100%;
 flex-direction: column;
 gap: 20px;
 text-align: center;
 }
+.about-left { text-align: center; width: 100%; flex: 0 0 auto; }
+.about-right { width: 100%; }
+.about-proof { justify-content: center; }
+.about-center-box { margin: 0; width: 100%; height: auto; }
 
-.about-left {
-text-align: center;
+/* EXPERIENCE */
+.timeline { position: relative; padding-left: 20px; }
+.exp-container {
 width: 100%;
+grid-template-columns: minmax(0, 1fr);
+gap: 14px;
+padding: 76px 0 16px 20px;
+display: grid;
 }
-
-.about-right {
-        width: 90%;
-    }
-
-.about-center-box {
-margin: 0;
-  width:125%;
-  height:90%;
-}
-
-/* EXPERIENCE (BIG FIX) */
-.timeline {
-position:relative;
-  padding-left:20px;
-}
-
+.exp-container .line { left: 10px; top: 76px; bottom: 16px; height: auto; }
 .exp-box {
 position: relative !important;
-width: 85% !important;
+width: 100% !important;
+grid-column: 1 !important;
 left: 0 !important;
+top: auto !important;
+bottom: auto !important;
 transform: none !important;
-margin: 20px 0 20px 30px !important;
+margin: 0 !important;
+text-align: left !important;
 }
-
-/* remove left/right split */
-.left, .right {
-left: 0 !important;
-}
-
-.e1, .e2, .e3, .e4{
-top: -7% !important;
-}
-
-/* hide center line (optional) */
-.timeline::after {
-left: 10px !important;
-  width:2px;
-}
+.left, .right { left: 0 !important; }
+.timeline::after { left: 10px !important; width: 2px; }
 
 /* SKILLS */
-.skills {
-position:relative;
-height: 300px;
-}
-
-.bubble {
-position: absolute !important;
-width: 65px;
-height: 65px;
-font-size:10px: 5px !important;
-}
-
-/* RANDOM POSITIONS (mobile safe) */
-.bubble:nth-child(1) { top: 1%; left: 20%; }
-.bubble:nth-child(2) { top: 12%; left: 60%; }
-.bubble:nth-child(3) { top: 30%; left: 90%; }
-.bubble:nth-child(4) { top: 50%; left: -5%; }
-.bubble:nth-child(5) { top: 55%; left: 80%; }
-.bubble:nth-child(6) { top: 26%; left: -5%; }
-.bubble:nth-child(7) { top: 80%; left: 40%; }
-.bubble:nth-child(8) { top: 53%; left: 40%; }
-.bubble:nth-child(9) { top: 29%; left: 35%; }
-.bubble:nth-child(10) { top: 74%; left: 1%;}
-.bubble:nth-child(11) { top: -4%; left: 80%; }
-.bubble:nth-child(12) { top: 80%; left: 80%; }
-
+.skills-grid { grid-template-columns: 1fr; gap: 12px; }
+.skill-group { padding: 16px; }
+.skill-group h3 { margin-bottom: 10px; }
 
 /* WORK SLIDER */
-.slider-container {
-width: 100%;
-}
-
-.card {
-min-width: 90%; /* show 1 card */
-margin: 10px;
-  flex: 0 0 calc(33.333% - 14px);
-  box-sizing: border-box;
-
-}
-
+.slider-container { width: 100%; padding: 26px 42px; }
+.card { min-width: 0; margin: 0; flex: 0 0 100%; box-sizing: border-box; }
 .nav-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 1000;   /* VERY IMPORTANT */
-
-  background: rgba(15,23,42,0.9);
-  border: 1px solid #38bdf8;
-  color: #38bdf8;
-
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-
-  cursor: pointer;
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+z-index: 1000;
+background: rgba(15,23,42,0.9);
+border: 1px solid #38bdf8;
+color: #38bdf8;
+width: 45px;
+height: 45px;
+border-radius: 50%;
+cursor: pointer;
 }
+.slider { gap: 12px; }
+.impact-row { gap: 6px; }
+.impact-item { padding: 8px 5px; }
+.impact-value { font-size: 17px; }
+.impact-label { font-size: 10px; }
+.nav-btn { width: 38px; height: 38px; }
+.left-btn { left: 4px; }
+.right-btn { right: 4px; }
 
 /* CONTACT */
-.contact-icons {
-flex-wrap: wrap;
-gap: 15px;
+.contact-icons { flex-wrap: wrap; gap: 15px; }
+.contact-links { flex-direction: column; align-items: center; }
+.contact-link { width: min(100%, 360px); min-width: 0; }
 }
-}
-
 </style>
 </head>
 
 <body>
 
+<main>
 <!-- HERO -->
-<div class="section fade">
+<section class="section fade" aria-label="Introduction">
 <div class="box">
 <div class="hero">
-<div>Akshita Tyagi</div>
+<h1 class="hero-name">Akshita Tyagi</h1>
+<div class="hero-copy"><div class="hero-focus"><strong>Salesforce Developer</strong><br>Apex · LWC · OmniStudio · Integrations</div></div>
 <div class="avatar">
- <div class="ring"></div>
- <img src="profile.png">
+<div class="ring" aria-hidden="true"></div>
+<img src="profile.png" alt="Portrait of Akshita Tyagi">
 </div>
-<div>A Salesforce Developer</div>
+<div class="hero-focus">Building reliable Salesforce solutions from <strong>configuration to CI/CD</strong>.</div>
 </div>
 </div>
-</div>
-  
-<div class="section">
+</section>
+
+<section class="section">
 <div class="box">
-
-<!-- <div class="about-title">About Me</div>-->
-
 <div class="about-content">
-<div class="about-left">
-About Me
-</div>
-
+<div class="about-left">About Me</div>
 <div class="about-center-box">
-
 <div class="about-right">
-Results-driven Salesforce Developer with 4.9 years of experience in Apex, LWC, and automation. Skilled in building scalable solutions, integrations, and improving business efficiency through smart design and development.
+Salesforce Developer with nearly five years of experience delivering features across the platform lifecycle. I build maintainable Apex and Lightning experiences, connect Salesforce with external systems, and use automation and thoughtful configuration to simplify business processes.
+<div class="about-proof">
+<span class="proof-chip">Platform development</span>
+<span class="proof-chip">Integration delivery</span>
+<span class="proof-chip">Release automation</span>
 </div>
-  </div>
 </div>
+</div>
+</div>
+</div>
+</section>
 
-</div>
-</div>
-
-  
 <!-- EXPERIENCE -->
-<div class="section fade">
-<div class="box">
+<section class="section fade">
+<div class="box experience-screen">
 <div class="heading">My Experience</div>
-
 <div class="exp-container">
-<div class="line"></div>
-
-<div class="exp-box left e1">
-  <div class="top-row">
-  <div class="role">Programmer Analyst Trainee</div>
-  <div class="year">2021-2022</div>
-  </div>
-  <div class="company">Company</div>
-</div>
-<div class="exp-box right e2">
-  <div class="top-row">
-  <div class="role">Programmer Analyst</div>
-  <div class="year">2022-2023</div>
-  </div>
-  <div class="company">Cognizant</div>
-</div>
-<div class="exp-box left e3">
-  <div class="top-row">
-  <div class="role">Associate</div>
-  <div class="year">2023-2024</div>
-  </div>
-  <div class="company">Cognizant</div>
-</div>
-<div class="exp-box right e4">
-  <div class="top-row">
-  <div class="role">Packaged App Development Analyst</div>
-  <div class="year">2024-Present</div>
-  </div>
-  <div class="company">Accenture</div>
-</div>
-
+<div class="line" aria-hidden="true"></div>
+<article class="exp-box left e1">
+<div class="top-row"><div class="role">Packaged App Development Senior Analyst</div><div class="year">2026–Present</div></div>
+<div class="company">Accenture</div>
+</article>
+<article class="exp-box right e2">
+<div class="top-row"><div class="role">Packaged App Development Analyst</div><div class="year">2024–2026</div></div>
+<div class="company">Accenture</div>
+</article>
+<article class="exp-box left e3">
+<div class="top-row"><div class="role">Associate</div><div class="year">2023–2024</div></div>
+<div class="company">Cognizant</div>
+</article>
+<article class="exp-box right e4">
+<div class="top-row"><div class="role">Programmer Analyst</div><div class="year">2022–2023</div></div>
+<div class="company">Cognizant</div>
+</article>
+<article class="exp-box left e5">
+<div class="top-row"><div class="role">Programmer Analyst Trainee</div><div class="year">2021–2022</div></div>
+<div class="company">Cognizant</div>
+</article>
 </div>
 </div>
-</div>
+</section>
 
 <!-- SKILLS -->
-<div class="section fade">
+<section class="section fade">
 <div class="box">
 <div class="heading">My Skills</div>
-
-<div class="skills">
-<div class="bubble" style="top:10%;left:20%">Apex</div>
-<div class="bubble" style="top:20%;left:50%">LWC</div>
-<div class="bubble" style="top:30%;left:70%">Aura</div>
-<div class="bubble" style="top:50%;left:27%">SOQL</div>
-<div class="bubble" style="top:50%;left:60%">Batch</div>
-<div class="bubble" style="top:40%;left:15%">Queueable</div>
-<div class="bubble" style="top:80%;left:40%">Integration</div>
-<div class="bubble" style="top:50%;left:40%">Omniscript</div>
-<div class="bubble" style="top:20%;left:35%">Configuration</div>
-<div class="bubble" style="top:60%;left:50%">Deployment</div>
-  <div class="bubble" style="top:70%;left:70%">Trigger</div>
-<div class="bubble" style="top:60%;left:80%">Flows</div>
+<div class="skills-grid">
+<section class="skill-group"><h3>Development</h3><div class="skill-list"><span class="skill-item">Apex</span><span class="skill-item">LWC</span><span class="skill-item">Aura</span><span class="skill-item">SOQL</span><span class="skill-item">Batch Apex</span><span class="skill-item">Queueable Apex</span></div></section>
+<section class="skill-group"><h3>Platform &amp; Automation</h3><div class="skill-list"><span class="skill-item">Salesforce Configuration</span><span class="skill-item">Flows</span><span class="skill-item">Triggers</span><span class="skill-item">OmniStudio</span></div></section>
+<section class="skill-group"><h3>Integrations &amp; Delivery</h3><div class="skill-list"><span class="skill-item">REST APIs</span><span class="skill-item">Postman</span><span class="skill-item">Git</span><span class="skill-item">Copado</span><span class="skill-item">Harness</span></div></section>
 </div>
 </div>
-</div>
+</section>
 
 <!-- WORK -->
-<div class="section fade">
+<section class="section fade">
 <div class="box">
 <div class="heading">My Work</div>
+<div class="impact-row" aria-label="Selected project outcomes">
+<div class="impact-item"><span class="impact-value">20%</span><span class="impact-label">faster claim resolution</span></div>
+<div class="impact-item"><span class="impact-value">70%</span><span class="impact-label">fewer customer escalations</span></div>
+<div class="impact-item"><span class="impact-value">25%</span><span class="impact-label">higher release success</span></div>
+</div>
 <div class="slider-container">
-
-      <button class="nav-btn left-btn" onclick="slideLeft()">❮</button>
-
-      <div class="slider" id="slider">
-
-        <!-- CARD 1 -->
-        <div class="card">
-          <div class="work-desc">Designed and developed a scalable Claims Management solution using LWC and Apex, streamlining end-to-end claim processing. Reduced resolution time by 20% while improving data accuracy and user efficiency across multiple business workflows.</div></div>
-<div class="card">
-  <div class="work-desc">Engineered automated SLA tracking and escalation workflows using Salesforce Flows and Apex triggers, eliminating manual intervention. Achieved a 70% reduction in customer escalations and significantly improved response turnaround time.</div></div>
-<div class="card">
-  <div class="work-desc">Developed high-performance, reusable Lightning Web Components to simplify complex UI interactions. Reduced user clicks and enhanced usability, contributing to a 30% improvement in overall user experience and productivity.</div></div>
-  <div class="card">
-    <div class="work-desc">Implemented OmniStudio components (Integration Procedures, DataRaptors, FlexCards) along with REST API integrations to enable seamless communication between Salesforce and external systems, reducing integration cycle time by 20%.</div></div>
-  <div class="card">
-    <div class="work-desc">Led deployment strategies using Git, Copado, and Harness, ensuring smooth CI/CD pipelines. Improved release success rate by 25% while accelerating deployment cycles in Agile delivery environments.</div></div>
-  <div class="card">
-    <div class="work-desc">Optimized large-scale data operations using Batch Apex and Queueable Apex, ensuring efficient processing of high-volume datasets. Enhanced system performance and scalability by over 30%.</div></div>
-  <div class="card">
-    <div class="work-desc">Designed and implemented automated workflows for case assignment, task creation, and email notifications using Salesforce Flows, significantly improving operational efficiency and real-time tracking capabilities.</div></div>
+<button class="nav-btn left-btn" type="button" onclick="moveSlider(-1)" aria-label="Previous project" disabled>
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+</button>
+<div class="slider" id="slider">
+<article class="card"><h3>Claims Management</h3><div class="tech-list"><span class="tech-chip">LWC</span><span class="tech-chip">Apex</span></div><div class="work-desc">Built an end-to-end claims solution that improved data accuracy and streamlined processing, reducing resolution time by 20%.</div></article>
+<article class="card"><h3>SLA Tracking &amp; Escalations</h3><div class="tech-list"><span class="tech-chip">Salesforce Flow</span><span class="tech-chip">Apex</span></div><div class="work-desc">Automated SLA monitoring and escalation workflows, eliminating manual follow-up and reducing customer escalations by 70%.</div></article>
+<article class="card"><h3>Reusable Lightning Experiences</h3><div class="tech-list"><span class="tech-chip">LWC</span><span class="tech-chip">JavaScript</span></div><div class="work-desc">Created reusable components for complex interactions, reducing clicks and contributing to a 30% improvement in user productivity.</div></article>
+<article class="card"><h3>OmniStudio Integrations</h3><div class="tech-list"><span class="tech-chip">OmniStudio</span><span class="tech-chip">REST</span></div><div class="work-desc">Connected Salesforce to external systems with Integration Procedures, DataRaptors, FlexCards, and REST APIs; reduced integration cycle time by 20%.</div></article>
+<article class="card"><h3>Release &amp; CI/CD Delivery</h3><div class="tech-list"><span class="tech-chip">Git</span><span class="tech-chip">Copado</span><span class="tech-chip">Harness</span></div><div class="work-desc">Supported dependable release pipelines and deployment strategies, improving release success by 25% in Agile delivery environments.</div></article>
+<article class="card"><h3>High-Volume Data Processing</h3><div class="tech-list"><span class="tech-chip">Batch Apex</span><span class="tech-chip">Queueable</span></div><div class="work-desc">Optimized large-scale data operations with asynchronous Apex patterns to improve processing performance and scalability.</div></article>
+<article class="card"><h3>Service Workflow Automation</h3><div class="tech-list"><span class="tech-chip">Flow</span><span class="tech-chip">Configuration</span></div><div class="work-desc">Automated case assignment, task creation, and notifications to improve operational efficiency and real-time tracking.</div></article>
 </div>
-
-      <button class="nav-btn right-btn" onclick="slideRight()">❯</button>
-
-    </div>
+<button class="nav-btn right-btn" type="button" onclick="moveSlider(1)" aria-label="Next project">
+<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg>
+</button>
 </div>
 </div>
+</section>
 
 <!-- CONTACT -->
-<div class="section fade">
+<section class="section fade">
 <div class="box contact">
 <div class="heading">Contact</div>
-<div>akshita.tyagi16@gmail.com</div>
-<div>+91-9897370632</div>
+<p class="contact-intro">Have a Salesforce project or opportunity in mind? I’d be glad to connect.</p>
+<div class="contact-links">
+<a class="contact-link" href="mailto:akshita.tyagi16@gmail.com"><span class="contact-label">Email</span><span class="contact-value">akshita.tyagi16@gmail.com</span></a>
+<a class="contact-link" href="tel:+919897370632"><span class="contact-label">Phone</span><span class="contact-value">+91-9897370632</span></a>
+</div>
 <div class="contact-icons">
-
-<a href="https://www.linkedin.com/in/akshita-tyagi-76831116b" target="_blank" class="icon">
-<svg viewBox="0 0 24 24">
-<path fill="currentColor"
-d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M8.34 17V10.67H6.31V17H8.34M7.33 9.64C7.96 9.64 8.5 9.1 8.5 8.47C8.5 7.84 7.96 7.3 7.33 7.3C6.7 7.3 6.16 7.84 6.16 8.47C6.16 9.1 6.7 9.64 7.33 9.64M17.66 17V13.24C17.66 11.39 16.68 10.5 15.38 10.5C14.35 10.5 13.87 11.07 13.63 11.47V10.67H11.6C11.63 11.2 11.6 17 11.6 17H13.63V13.47C13.63 13.28 13.64 13.09 13.7 12.96C13.85 12.58 14.18 12.18 14.75 12.18C15.5 12.18 15.8 12.75 15.8 13.58V17H17.66Z"/>
+<a href="https://www.linkedin.com/in/akshita-tyagi-76831116b" target="_blank" rel="noopener noreferrer" class="icon" aria-label="Akshita Tyagi on LinkedIn">
+<svg viewBox="0 0 24 24" aria-hidden="true">
+<path fill="currentColor" d="M19 3A2 2 0 0 1 21 5V19A2 2 0 0 1 19 21H5A2 2 0 0 1 3 19V5A2 2 0 0 1 5 3H19M8.34 17V10.67H6.31V17H8.34M7.33 9.64C7.96 9.64 8.5 9.1 8.5 8.47C8.5 7.84 7.96 7.3 7.33 7.3C6.7 7.3 6.16 7.84 6.16 8.47C6.16 9.1 6.7 9.64 7.33 9.64M17.66 17V13.24C17.66 11.39 16.68 10.5 15.38 10.5C14.35 10.5 13.87 11.07 13.63 11.47V10.67H11.6C11.63 11.2 11.6 17 11.6 17H13.63V13.47C13.63 13.28 13.64 13.09 13.7 12.96C13.85 12.58 14.18 12.18 14.75 12.18C15.5 12.18 15.8 12.75 15.8 13.58V17H17.66Z"/>
 </svg>
 </a>
-
 </div>
 </div>
-</div>
+</section>
+</main>
 
 <script>
-  window.scrollTo(0,1);
-  window.scrollTo(0,0);
-// FADE IN ON SCROLL
+// Fade in sections as they enter the viewport.
 const elements = document.querySelectorAll(".fade");
 
-window.addEventListener("scroll", () => {
-elements.forEach(el => {
-const top = el.getBoundingClientRect().top;
-if(top < window.innerHeight - 100){
-el.classList.add("show");
+function revealVisibleSections() {
+  elements.forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+      el.classList.add("show");
+    }
+  });
 }
-});
-});
+
+window.addEventListener("scroll", revealVisibleSections, { passive: true });
+window.addEventListener("load", revealVisibleSections);
+revealVisibleSections();
 
 let index = 0;
+const slider = document.getElementById("slider");
+const previousButton = document.querySelector(".left-btn");
+const nextButton = document.querySelector(".right-btn");
 
-function slideRight() {
-
-  const slider = document.getElementById("slider");
-  const cards = document.querySelectorAll(".card");
-
-  const totalCards = cards.length;
-  const visibleCards = 3;
-
-  if(index < totalCards - visibleCards){
-
-    index++;
-
-    const cardWidth =
-      cards[0].offsetWidth + 20; // includes margin
-
-    slider.style.transform =
-      `translateX(-${index * cardWidth}px)`;
-  }
+function visibleCardCount() {
+  return window.matchMedia("(max-width: 768px)").matches ? 1 : 3;
 }
 
-function slideLeft(){
+function updateSlider() {
+  const cards = slider.querySelectorAll(".card");
+  const maxIndex = Math.max(0, cards.length - visibleCardCount());
+  index = Math.min(index, maxIndex);
+  const gap = parseFloat(getComputedStyle(slider).gap) || 0;
+  const cardStep = cards.length ? cards[0].getBoundingClientRect().width + gap : 0;
 
-  const slider = document.getElementById("slider");
-  const cards = document.querySelectorAll(".card");
-
-  if(index > 0){
-
-    index--;
-
-    const cardWidth =
-      cards[0].offsetWidth + 20;
-
-    slider.style.transform =
-      `translateX(-${index * cardWidth}px)`;
-  }
+  slider.style.transform = `translateX(-${index * cardStep}px)`;
+  previousButton.disabled = index === 0;
+  nextButton.disabled = index >= maxIndex;
 }
+
+function moveSlider(direction) {
+  const maxIndex = Math.max(0, slider.children.length - visibleCardCount());
+  index = Math.max(0, Math.min(maxIndex, index + direction));
+  updateSlider();
+}
+
+window.addEventListener("resize", updateSlider);
+window.addEventListener("load", updateSlider);
+updateSlider();
+
+// Let touch users swipe between project cards as well as use the arrows.
+let touchStartX = 0;
+const carousel = document.querySelector(".slider-container");
+
+carousel.addEventListener("touchstart", event => {
+  touchStartX = event.changedTouches[0].screenX;
+}, { passive: true });
+
+carousel.addEventListener("touchend", event => {
+  const distance = event.changedTouches[0].screenX - touchStartX;
+  if (Math.abs(distance) > 40) {
+    moveSlider(distance < 0 ? 1 : -1);
+  }
+}, { passive: true });
 </script>
 
 </body>
